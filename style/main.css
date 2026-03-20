@@ -529,3 +529,211 @@ button[type="submit"]:hover {
 .parcours-item:nth-child(2) {
   animation-delay: 0.6s;
 }
+
+/*responsive améliorer*/
+/* === Ton Code existant avec petites corrections de fluidité === */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden; /* Empêche le défilement horizontal parasite */
+}
+
+/* === Header (Optimisé pour le responsive) === */
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px 0;
+}
+
+header .container {
+  display: flex; /* Passage en Flex pour plus de souplesse que le Grid fixe */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+header h1 {
+  font-size: 1.8em;
+}
+
+nav ul {
+  list-style: none;
+  display: flex; /* Flexbox est plus simple ici pour le menu */
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+nav a:hover {
+  color: #1abc9c;
+}
+
+/* Titre animé - Taille adaptée pour mobile */
+.animated-title {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: clamp(1.5rem, 8vw, 3rem); /* Taille fluide selon l'écran */
+  text-align: center;
+  margin: 30px 10px;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation:
+    fadeSlideIn 1s ease-out forwards,
+    zoomBeat 1s ease-in-out infinite alternate,
+    colorChange 9s linear infinite;
+}
+
+/* Keyframes conservés... */
+@keyframes fadeSlideIn { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes zoomBeat { from { transform: scale(1); } to { transform: scale(1.05); } } /* Réduit un peu pour pas que ça sorte de l'écran */
+@keyframes colorChange { 0% { color: #ff4c4c; } 33% { color: #4caf50; } 66% { color: #2196f3; } 100% { color: #ff4c4c; } }
+
+/* === Sections === */
+.about-section {
+  padding: 60px 20px;
+  background-color: #f5f5f5;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+  font-size: 1.1rem;
+}
+
+.about-photo img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* === Grilles de compétences et projets === */
+.skills-grid, .project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* S'adapte tout seul ! */
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skill-card, .project-card {
+  width: 100%; /* Utilise toute la place de sa cellule de grille */
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* === Parcours === */
+.parcours-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.timeline {
+  border-left: 3px solid #3498db;
+  padding-left: 30px;
+  margin-left: 10px;
+}
+
+/* === Contact === */
+.contact-section {
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* =============================================
+   AJOUT : SECTION MOBILE & RESPONSIVE 
+   (Le coeur du travail pour ton site)
+   ============================================= */
+
+@media (max-width: 768px) {
+  /* Header & Menu */
+  header .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  nav ul {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Section À Propos */
+  .about-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .about-text {
+    min-width: 100%;
+  }
+
+  /* Titres de sections */
+  h2 {
+    font-size: 1.8rem !important;
+  }
+
+  /* Parcours */
+  .timeline {
+    margin-left: 5px;
+    padding-left: 20px;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Menu encore plus serré pour les tout petits téléphones */
+  nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+  }
+  
+  header h1 {
+    font-size: 1.5em;
+  }
+}
