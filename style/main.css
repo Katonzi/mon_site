@@ -737,3 +737,8 @@ nav a:hover {
     font-size: 1.5em;
   }
 }
+.skill-card i {
+  font-size: 40px;
+  color: #007bff;
+  margin-bottom: 15px;
+}
