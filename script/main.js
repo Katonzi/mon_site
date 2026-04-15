@@ -1,54 +1,42 @@
-const form = document.getElementById('contact-form');
+document.addEventListener("DOMContentLoaded", ()=>{
+  const form = document.getElementById('contact-form');
 const message = document.querySelector('.form-status');
 
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', async function (e) {
   e.preventDefault();
 
-  // Simple validation example (HTML5 required already does much)
-  if (!form.name.value || !form.email.value || !form.message.value) {
-    message.textContent = "Merci de remplir tous les champs.";
-    message.style.color = "red";
-    return;
-  }
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const userMessage = document.getElementById("message").value.trim();
 
-  // Ici on simule l'envoi
-  message.textContent = "Message envoyé avec succès ! Je vous répondrai rapidement.";
-  message.style.color = "green";
+    if(!name || !email || !userMessage){
+      message.textContent = "Remplissez tous les champs de ce formulaire!";
+      message.style.color = "red";
+      return;
+    }
+    
+    try{
+        const result = await fetch("http://localhost:3000/api/developpeur", {
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({username:name, usermail:email, usermessage:userMessage})
+        });
 
-  form.reset();
+        const data = await result.json();
+       
+        message.textContent = data.message;
+        message.style.color = "green";
+        form.reset();
+    }
+    catch(err){
+      console.error("Erreur lors de la récupération de données.");
+      message.textContent = err.message;
+      message.style.color = "red";
+    }
+  
 });
-  // Fonction pour détecter si un élément est visible à l’écran
-  function isVisible(el) {
-    const rect = el.getBoundingClientRect();
-    return rect.top < window.innerHeight - 100;
-  }
-
-  // Animation des éléments du parcours
-  function showOnScroll() {
-    const items = document.querySelectorAll('.parcours-item');
-    items.forEach(item => {
-      if (isVisible(item)) {
-        item.style.opacity = 1;
-        item.style.transform = 'translateY(0)';
-      }
-    });
-  }
-
-  window.addEventListener('scroll', showOnScroll);
-  window.addEventListener('load', showOnScroll);
-  window.addEventListener("DOMContentLoaded", () => {
-    const audio = document.getElementById("titre-audio");
-    audio.volume = 0.5; // Volume à moitié (entre 0 et 1)
-    audio.play().catch((e) => {
-      console.warn("Lecture automatique bloquée par le navigateur", e);
-    });
-  });
-  window.addEventListener("click", () => {
-  const audio = document.getElementById("titre-audio");
-  if (audio.paused) {
-    audio.play();
-  }
-}, { once: true });
+});
+ 
 
 
 
