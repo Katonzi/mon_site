@@ -7,8 +7,7 @@
   <link rel="stylesheet" href="style/main.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
   <header>
@@ -29,7 +28,6 @@
 
   </header>
 
-  <!-- Les autres sections viendront ici -->
    <section id="about" class="about-section">
   <div class="container">
     <h2>À propos de moi</h2>
@@ -76,7 +74,16 @@
       <h3>C#</h3>
       <p>Applications desktop et logique orientée objet.</p> 
     </div>
-  </div>
+    <div class="skill-card">
+      <i class="fa-brands fa-react"></i>
+      <h3>React</h3>
+      <p>Framework JavaScript pour la création des interfaces utilisateurs professionelles.</p> 
+    </div>
+    <div class="skill-card">
+      <i class="fa-brands fa-bootstrap"></i>
+      <h3>Bootstrap</h3>
+      <p>Framework CSS pour le design professionnel.</p> 
+    </div>
 </section>
 
 
@@ -143,15 +150,15 @@
   <form id="contact-form" action="#" method="POST">
     <div class="form-group">
       <label for="name">Nom complet</label>
-      <input type="text" id="name" name="name"  placeholder="Exemple :  Aurora Katonzi" />
+      <input type="text" id="name" name="name"  required placeholder="Exemple :  Aurora Katonzi" />
     </div>
     <div class="form-group">
       <label for="email">Adresse e-mail</label>
-      <input type="email" id="email" name="email"  placeholder="exemple@gmail.com" />
+      <input type="email" id="email" name="email"  required placeholder="exemple@gmail.com" />
     </div>
     <div class="form-group">
       <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5"  placeholder="Votre message"></textarea>
+      <textarea id="message" name="message" rows="5"  required placeholder="Votre message"></textarea>
     </div>
     <button type="submit">Envoyer</button>
   </form>
@@ -160,9 +167,28 @@
 
 
 
-
-
-<script src="./script/main.js"></script>
+<footer class="footer-index">
+  <div class="icon-responsive">  
+ <ul>
+    <li><i class="fa-solid fa-phone"></i> <i class="fa-brands fa-whatsapp"></i> +243 82 395 9573</li>
+    <li><i class="fa-solid fa-envelope"></i> katonzidenis@gmail.com</li>
+    <li><i class="fa-brands fa-facebook"></i> Denis Katonzi</li>
+    <li><i class="fa-brands fa-instagram"></i> Denis Jsrv Katonzi</li>
+    <li><i class="fa-brands fa-x-twitter"></i> Denis Katonzi</li>
+    <li><i class="fa-brands fa-tiktok"></i> Denis Katonzi</li>
+    <li><i class="fa-brands fa-snapchat"></i> Denis Katonzi</li>
+    <li><i class="fa-brands fa-youtube"></i> Denis katonzi</li>
+    <li><i class="fa-brands fa-github"></i> Katonzi</li>   
+ </ul>
+  </div>
+  <div>
+    <p>Nous sommes disponible pour tous vos service sur le web.</p>
+  </div>
+  <div class="copy-ritgh">
+    <p>&copy; Avril 2026 Denis Katonzi. <br> Tous droits réservés.</p>
+  </div>
+</footer>
+<script src="./script/main.js"></script> 
 
 </body>
 </html>

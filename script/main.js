@@ -16,7 +16,7 @@ form.addEventListener('submit', async function (e) {
     }
     
     try{
-        const result = await fetch("http://localhost:3000/api/developpeur", {
+        const result = await fetch("https://api-ecole.onrender.com/api/developpeur", {
           method:"POST",
           headers:{"Content-Type":"application/json"},
           body:JSON.stringify({username:name, usermail:email, usermessage:userMessage})
@@ -29,7 +29,7 @@ form.addEventListener('submit', async function (e) {
         form.reset();
     }
     catch(err){
-      console.error("Erreur lors de la récupération de données.");
+      console.error("Erreur lors de la récupération de données."); 
       message.textContent = err.message;
       message.style.color = "red";
     }
